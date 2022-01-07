@@ -12,7 +12,7 @@ class WebpackSftp {
   }
 
   apply(compiler) {
-    compiler.plugin('done', compilation => {
+    compiler.hooks.done.tap("FtpUpload", () => {
       if (!this.options.port) {
         this.options.port = 22
       }
